@@ -13,11 +13,12 @@
 		<script src="js/main.js" type="text/javascript"></script>
 	</head>
 	<body>
-		<h1>Trip Planner</h1>
+		<header>
+			<h1>Trip Planner</h1>
+		</header>
 		<form action="#" method="post">
 			<fieldset>
 				<legend>Add a Trip</legend>
-				
 				<ul>
 					<li>
 						<label for="travelMethod">Method of Travel:</label>
@@ -27,34 +28,29 @@
 							<option value="Car">Car</option>
 						</select>
 					</li>
-
  					<li>
  						<label for="tripType">Trip Type:</label>
 						<input type="radio" checked value="Business" id="business" name="tripType" /><label for="yes">Business</label>
 						<input type="radio" value="Vacation" id="vacation" name="tripType" /><label for="no">Vacation</label>
 					</li>
-				
-					<li>
-						<label for="dest">Destination:</label><input type="text" id="dest" />
-					</li>
-							
-					<li>
-						<label for="date">Date of Trip:</label><input type="date" id="date" />
-					</li>
-			
-					<li>
-						<input type="checkbox" id="alone" /><label for="alone">Travelling Alone</label>
-					</li>
-				
+					<li><label for="dest">Destination:</label><input type="text" id="dest" /></li>	
+					<li><label for="date">Date of Trip:</label><input type="date" id="date" /></li>
 					<li>
 						<label for="numPeople">Number of People:</label><br />
 						<input type="range" name="numPeople" min="1" max="10" />
-					</li>	
-				
-					<li>
-						<label for="notes">Additional Notes:</label><br /><textarea id="notes"></textarea>
 					</li>
+					<li><label for="notes">Additional Notes:</label><br /><textarea id="notes"></textarea></li>
+				</ul>
 			</fieldset>
+			<input type="submit" value="Add Trip" />
 		</form>
+		
+		<footer>
+			<ul>
+				<li><a href="#">Clear Stored Trips</a></li>
+				<li><a href="#">View All Stored Trips</a></li>
+			</ul>
+		</footer>
+		
 	</body>
 </html>
