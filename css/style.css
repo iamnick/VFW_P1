@@ -1,0 +1,36 @@
+/*
+
+title: index.html / addItem.html Styles
+by: Nick Stelzer
+for: Project 2
+Date
+
+*/
+
+body {
+	font-family: Arial;
+	background: -webkit-linear-gradient(top, #2F2727, #1a82f7);
+	min-height: 330px;
+}
+#content{overflow: scroll;}
+
+h1 {
+	border: 1px solid #000;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+	background: #ffffff;
+}
+
+form {
+	color: #F8971D;
+}
+
+legend {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+textarea {
+	height: 60px;
+	width: 200px;
+}
