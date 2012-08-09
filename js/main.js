@@ -27,6 +27,24 @@ window.addEventListener("DOMContentLoaded", function() {
 		}
 		selectLi.appendChild(makeSelect);
 	}
+	
+	function storeData() {
+		var id = Math.floor(Math.random()*1000000);
+		
+		// Gather data from form field, store in object
+		// Object properties contain array with form label and input value
+		var trip = {};
+			trip.method = ["Travel Method: ", $(travelMethod).value];
+			trip.type = ["Trip Type: ", tripType];
+			trip.dest = ["Destination: ", $(dest).value];
+			trip.date = ["Date: ", $(date).value];
+			trip.people = ["Number of People: ", $(numPeople).value];
+			trip.notes = ["Notes: ", $(notes).value];
+			
+		// Save data into local storage, use Stringify to convert object to string
+		localStorage.setItem(id, JSON.stringify(item));
+		alert("Trip Saved!");
+	}
 
 	// Variable defaults
 	var travelMethods = ["Plane", "Train", "Car"];
@@ -35,8 +53,10 @@ window.addEventListener("DOMContentLoaded", function() {
 	// Set Link & Submit Click Events
 	var viewLink = $('viewAllTrips');
 	viewLink.addEventListener("click", getData);
+	
 	var clearLink = $('clearTrips');
 	clearLink.addEventListener("click", clearData);
+	
 	var addTrip = $('addTrip');
 	addTrip.addEventListener("click", storeData);
 
