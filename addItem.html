@@ -30,12 +30,12 @@
 						</select>
 					</li>
  					<li>
- 						<label for="tripType">Trip Type:</label>
+ 						<label for="tripType">Trip Type: </label>
 						<input type="radio" checked value="Business" id="business" name="tripType" /><label for="business">Business</label>
 						<input type="radio" value="Vacation" id="vacation" name="tripType" /><label for="vacation">Vacation</label>
 					</li>
-					<li><label for="dest">Destination:</label><input type="text" id="dest" /></li>	
-					<li><label for="date">Date of Trip:</label><input type="date" id="date" /></li>
+					<li><label for="dest">Destination: </label><input type="text" id="dest" /></li>	
+					<li><label for="date">Date of Trip: </label><input type="date" id="date" /></li>
 					<li>
 						<label for="numPeople">Number of People:</label><br />
 						<input type="range" name="numPeople" min="1" max="10" />
@@ -43,13 +43,13 @@
 					<li><label for="notes">Additional Notes:</label><br /><textarea id="notes"></textarea></li>
 				</ul>
 			</fieldset>
-			<input type="submit" value="Add Trip" />
+			<div class="buttonHolder"><input type="submit" id="addTrip" value="Add Trip" /></div>
 		</form>
 		
 		<footer>
 			<ul>
-				<li><a href="#">Clear Stored Trips</a></li>
-				<li><a href="#">View All Stored Trips</a></li>
+				<li><a href="#" id="clearTrips">Clear Stored Trips</a></li>
+				<li><a href="#" id="viewAllTrips">View All Stored Trips</a></li>
 			</ul>
 		</footer>
 		

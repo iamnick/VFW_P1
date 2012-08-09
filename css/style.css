@@ -10,16 +10,31 @@ Date
 body {
 	font-family: Arial, Helvetica, serif;
 	background: -webkit-gradient(linear, left top, 0 330, from(#11175E), to(#1B75BA));
+	min-height: 330px;
 	padding-left: 5px;
 	padding-right: 5px;
 }
 #content{overflow: scroll;}
 
+.indexPageContent {
+	background: #ffffff;
+	border-radius: 15px;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+}
+
 h1 {
+	/* border: 3px solid #F8971D; */
 	border-radius: 15px;
 	text-align: center;
+	text-shadow: 2px 2px 1px rgba(17, 23, 94, .2);
 	padding: 10px 0px 10px 0px;
 	background: #ffffff;
+} 
+
+h2 {
+	margin-top: 20px;
+	margin-bottom: 5px;
 }
 
 fieldset {
@@ -30,11 +45,13 @@ form {
 	background: #ffffff;
 	border-radius: 15px;
 	font-size: 14px;
+	padding: 0px 0px 10px 0px;
 }
 
 legend {
 	font-size: 24px;
 	font-weight: bold;
+	text-shadow: 2px 2px 1px rgba(17, 23, 94, .2);
 	padding-top: 10px;
 }
 
@@ -46,4 +63,18 @@ textarea {
 ul {
 	margin-left: -20px;
 	list-style-type: square;
+}
+
+li {
+	min-height: 30px;
+	margin-bottom: 5px;
+}
+
+.buttonHolder {
+	text-align: center;
+}
+
+a {
+	color: #63b7ea;
+	/* color: #f8971d; */
 }
