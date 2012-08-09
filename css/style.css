@@ -16,11 +16,18 @@ body {
 }
 #content{overflow: scroll;}
 
-.indexPageContent {
+#indexPageContent {
 	background: #ffffff;
 	border-radius: 15px;
 	padding: 10px 10px 10px 10px;
 	text-align: center;
+}
+
+.tripContent {
+	background: #ffffff;
+	border-radius: 15px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 0px 10px 0px;
 }
 
 h1 {
@@ -60,7 +67,7 @@ textarea {
 	width: 220px;
 }
 
-ul {
+#formOptions {
 	margin-left: -20px;
 	list-style-type: square;
 }
@@ -70,8 +77,18 @@ li {
 	margin-bottom: 5px;
 }
 
-.buttonHolder {
+#buttonHolder {
+	display: block;
 	text-align: center;
+}
+
+#footer {
+	margin: 10px 0px 0px 0px;
+	text-align: center;
+}
+
+.links {
+	margin: 0px 5px 0px 5px;
 }
 
 a {

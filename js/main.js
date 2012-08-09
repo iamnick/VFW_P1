@@ -39,6 +39,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 	
+	// Hides/shows elements based on the link you click
 	function toggleDisplay (onOff) {
 		switch (onOff) {
 			case "on":
@@ -56,6 +57,11 @@ window.addEventListener("DOMContentLoaded", function () {
 				return false;
 		}
 	} 
+	
+	// Updates the span tag showing value of slider
+	function updatePeople () {
+		$('people').innerHTML = $('numPeople').value
+	}
 	
 	// Gather data from form field, store in object, then store in local storage
 	function storeData () {
@@ -79,26 +85,28 @@ window.addEventListener("DOMContentLoaded", function () {
 	// Write data from localStorage to browser
 	function getData () {
 		toggleDisplay("on");
+		if (localStorage.length === 0) {
+			alert("There are no saved trips currently.");
+		}
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "savedTrips");
-		var makeList = document.createElement('ul');
-		makeDiv.appendChild(makeList);
-		document.body.appendChild(makeDiv);
+		$('pageContent').appendChild(makeDiv);
 		
 		for (var i = 0, j = localStorage.length; i < j; i++) {
-			var makeLi = document.createElement('li');
-			makeList.appendChild(makeLi);
+			var makeSubDiv = document.createElement('div');
+			makeSubDiv.setAttribute("class", "tripContent");
+			makeDiv.appendChild(makeSubDiv);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
 			var obj = JSON.parse(value);
-			var makeSubList = document.createElement('ul');
-			makeLi.appendChild(makeSubList);
+			var makeList = document.createElement('ul');
+			makeSubDiv.appendChild(makeList);
 			
 			for (var k in obj) {
-				var makeSubLi = document.createElement('li');
-				makeSubList.appendChild(makeSubLi);
+				var makeLi = document.createElement('li');
+				makeList.appendChild(makeLi);
 				var optSubText = obj[k][0]+ " " + obj[k][1];
-				makeSubLi.innerHTML = optSubText;
+				makeLi.innerHTML = optSubText;
 			}
 		}
 	}
@@ -129,6 +137,9 @@ window.addEventListener("DOMContentLoaded", function () {
 	
 	var addButton = $('addTrip');
 	addButton.addEventListener("click", storeData);
+	
+	var peopleSlider = $('numPeople');
+	peopleSlider.addEventListener("change", updatePeople);
 
 });
 
