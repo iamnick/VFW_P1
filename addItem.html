@@ -16,7 +16,7 @@
 		<header>
 			<h1>Trip Planner</h1>
 		</header>
-		<form action="#" method="post">
+		<form action="#" method="post" id="addTripForm">
 			<fieldset>
 				<legend>Add a Trip</legend>
 				<ul>
@@ -41,10 +41,11 @@
 		</form>
 		
 		<footer>
-			<ul>
-				<li><a href="#" id="clearTrips">Clear Stored Trips</a></li>
-				<li><a href="#" id="viewAllTrips">View All Stored Trips</a></li>
-			</ul>
+			<nav id="footerNav">
+				<a href="#" id="clearTrips">Clear Stored Trips</a>
+				<a href="#" id="viewAllTrips">View All Stored Trips</a>
+				<a href="addItem.html" id="addNewTrip" style="display:none;">Add A New Trip</a>
+			</nav>
 		</footer>
 		<script src="js/main.js" type="text/javascript"></script>	
 	</body>
