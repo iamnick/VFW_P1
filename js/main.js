@@ -1,6 +1,6 @@
 // Nick Stelzer
 // VFW 1208 - Project 2
-// August 8, 2012
+// August 9, 2012
 
 // Waits until DOM is ready
 window.addEventListener("DOMContentLoaded", function () {
@@ -142,11 +142,3 @@ window.addEventListener("DOMContentLoaded", function () {
 	peopleSlider.addEventListener("change", updatePeople);
 
 });
-
-/*
-						<select id="travelMethod">
-							<option value="Plane">Plane</option>
-							<option value="Train">Train</option>
-							<option value="Car">Car</option>
-						</select>
-*/

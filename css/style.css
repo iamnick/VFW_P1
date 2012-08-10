@@ -2,8 +2,8 @@
 
 title: index.html / addItem.html Styles
 by: Nick Stelzer
-for: Project 2
-Date
+for: VFW 1208 - Project 2
+date: August 9, 2012
 
 */
 
@@ -31,7 +31,6 @@ body {
 }
 
 h1 {
-	/* border: 3px solid #F8971D; */
 	border-radius: 15px;
 	text-align: center;
 	text-shadow: 2px 2px 1px rgba(17, 23, 94, .2);
@@ -93,5 +92,4 @@ li {
 
 a {
 	color: #63b7ea;
-	/* color: #f8971d; */
 }
