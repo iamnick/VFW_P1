@@ -102,12 +102,30 @@ window.addEventListener("DOMContentLoaded", function () {
 			var makeList = document.createElement('ul');
 			makeSubDiv.appendChild(makeList);
 			
+			// Create List of Trip Details
 			for (var k in obj) {
 				var makeLi = document.createElement('li');
 				makeList.appendChild(makeLi);
 				var optSubText = obj[k][0]+ " " + obj[k][1];
 				makeLi.innerHTML = optSubText;
 			}
+			
+			// Create Links to Edit/Delete
+			var buttonSpan = document.createElement('span');
+			buttonSpan.setAttribute("class", "editDeleteButtonSpan");
+			var editButton = document.createElement('input');
+			editButton.setAttribute("type", "submit");
+			editButton.setAttribute("value", "Edit");
+			editButton.setAttribute("id", key);
+			var deleteButton = document.createElement('input');
+			deleteButton.setAttribute("type", "submit");
+			deleteButton.setAttribute("value", "Delete");
+			deleteButton.setAttribute("id", key);
+			makeSubDiv.appendChild(buttonSpan);
+			buttonSpan.appendChild(editButton);
+			buttonSpan.appendChild(deleteButton);
+			/* To Do: Make Buttons Same Size */
+	
 		}
 	}
 	

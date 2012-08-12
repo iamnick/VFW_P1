@@ -93,3 +93,8 @@ li {
 a {
 	color: #63b7ea;
 }
+
+.editDeleteButtonSpan {
+	display: block;
+	text-align: right;
+}
