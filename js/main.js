@@ -100,6 +100,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			var value = localStorage.getItem(key);
 			var obj = JSON.parse(value);
 			var makeList = document.createElement('ul');
+			makeSubDiv.setAttribute("id", key);
 			makeSubDiv.appendChild(makeList);
 			
 			// Create List of Trip Details
@@ -116,17 +117,53 @@ window.addEventListener("DOMContentLoaded", function () {
 			var editButton = document.createElement('input');
 			editButton.setAttribute("type", "submit");
 			editButton.setAttribute("value", "Edit");
-			editButton.setAttribute("id", key);
+			editButton.key = key;
 			var deleteButton = document.createElement('input');
 			deleteButton.setAttribute("type", "submit");
 			deleteButton.setAttribute("value", "Delete");
-			deleteButton.setAttribute("id", key);
+			deleteButton.key = key;
 			makeSubDiv.appendChild(buttonSpan);
 			buttonSpan.appendChild(editButton);
 			buttonSpan.appendChild(deleteButton);
-			/* To Do: Make Buttons Same Size */
+			editButton.addEventListener("click", editTrip);
+			/* To Do: Make Buttons Same Size 
+					  deleteButton.addEventListener("click", deleteTrip);
+			*/
 	
 		}
+	}
+	
+	// edit the values stored for a trip
+	function editTrip () {
+		// Get data from selected trip from local storage
+		var value = localStorage.getItem(this.key);
+		var trip = JSON.parse(value);
+		
+		toggleDisplay("off");
+		
+		$('travelMethod').value = trip.method[1];
+		$('dest').value = trip.dest[1];
+		$('date').value = trip.date[1];
+		$('numPeople').value = trip.people[1];
+		$('notes').value = trip.notes[1];
+
+		var radios = document.forms[0].tripType;
+		for (var i = 0; i < radios.length; i++){
+			if (radios[i].value == "Business" && trip.type[1] == "Business") {
+				radios[i].setAttribute("checked", "checked");
+			} else if (radios[i].value == "Vacation" && trip.type[1] == "Vacation") {
+				radios[i].setAttribute("checked", "checked");
+			}
+		}
+		
+		// Remove the initial listener from 'Add Trip' button
+		addButton.removeEventListener("click", storeData);
+		
+		// Change 'Add Trip' button to 'Update Trip'
+		$('addTrip').value = "Update Trip";
+		var updateTrip = $('addTrip');
+		updateTrip.addEventListener("click", validateForm);
+		updateTrip.key = this.key;	// Saves key value as property of update button event
 	}
 	
 	// clear data in localStorage
@@ -140,6 +177,11 @@ window.addEventListener("DOMContentLoaded", function () {
 			return false;
 		}
 	}	
+	
+	// Validate Form Fields
+	function validateForm () {
+		
+	}
 	
 	// Variable defaults
 	var travelMethods = ["Plane", "Train", "Car"],

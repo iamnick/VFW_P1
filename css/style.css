@@ -26,6 +26,7 @@ body {
 .tripContent {
 	background: #ffffff;
 	border-radius: 15px;
+	font-size: 14px;
 	padding: 10px 10px 10px 10px;
 	margin: 10px 0px 10px 0px;
 }
@@ -66,7 +67,7 @@ textarea {
 	width: 220px;
 }
 
-#formOptions {
+ul {
 	margin-left: -20px;
 	list-style-type: square;
 }
