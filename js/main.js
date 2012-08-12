@@ -64,10 +64,13 @@ window.addEventListener("DOMContentLoaded", function () {
 	}
 	
 	// Gather data from form field, store in object, then store in local storage
-	function storeData () {
-		var id = Math.floor(Math.random()*1000000);
+	function storeData (key) {
+		if (!key) {
+			var id = Math.floor(Math.random()*1000000);
+		} else {
+			var id = key;
+		}
 		getTripType();
-		
 		// Object properties contain array with form label and input value
 		var trip = {};
 			trip.method = ["Travel Method: ", $('travelMethod').value];
@@ -118,17 +121,16 @@ window.addEventListener("DOMContentLoaded", function () {
 			editButton.setAttribute("type", "submit");
 			editButton.setAttribute("value", "Edit");
 			editButton.key = key;
-			var deleteButton = document.createElement('input');
-			deleteButton.setAttribute("type", "submit");
-			deleteButton.setAttribute("value", "Delete");
-			deleteButton.key = key;
+			var removeButton = document.createElement('input');
+			removeButton.setAttribute("type", "submit");
+			removeButton.setAttribute("value", "Remove");
+			removeButton.key = key;
 			makeSubDiv.appendChild(buttonSpan);
 			buttonSpan.appendChild(editButton);
-			buttonSpan.appendChild(deleteButton);
+			buttonSpan.appendChild(removeButton);
 			editButton.addEventListener("click", editTrip);
-			/* To Do: Make Buttons Same Size 
-					  deleteButton.addEventListener("click", deleteTrip);
-			*/
+			removeButton.addEventListener("click", removeTrip);
+			/* To Do: Make Buttons Same Size			*/
 	
 		}
 	}
@@ -179,13 +181,57 @@ window.addEventListener("DOMContentLoaded", function () {
 	}	
 	
 	// Validate Form Fields
-	function validateForm () {
+	function validateForm (e) {
+		// Define elements to be checked
+		var getDest = $('dest');
+		var getDate = $('date');
 		
+		// Reset error messages
+		errMsg.innerHTML = "";
+		getDest.style.border = "";
+		getDate.style.border = "";
+		
+		// Check elements and generate error messages
+		var errorMessages = [];		
+		if (getDest.value == "") {
+			errorMessages.push("Please enter a destination.");
+			getDest.style.border = "1px solid red";
+		}
+		if (getDate.value == "") {
+			errorMessages.push("Please enter a date.");
+			getDate.style.border = "1px solid red";
+		}
+		
+		// Output 
+		if (errorMessages.length != 0) {
+			for (var i = 0, j = errorMessages.length; i < j; i++) {
+				var errorOutput = document.createElement('li');
+				errorOutput.innerHTML = errorMessages[i];
+				errMsg.appendChild(errorOutput);
+			}
+			e.preventDefault();
+			return false;
+		} else {
+			storeData(this.key);
+		}
+	}
+	
+	// Delete a saved trip
+	function removeTrip () {
+		var ask = confirm("Are you sure you want to remove this trip?");
+		if (ask) {
+			localStorage.removeItem(this.key);
+			window.location.reload();
+		} else {
+			alert("Trip was not removed.");
+		}
 	}
 	
 	// Variable defaults
 	var travelMethods = ["Plane", "Train", "Car"],
-		tripTypeValue;
+		tripTypeValue,
+		errMsg = $('errors')
+	;
 	createTravelMethodList();
 	
 	// Set Link & Submit Click Events
@@ -194,10 +240,11 @@ window.addEventListener("DOMContentLoaded", function () {
 	
 	var clearLink = $('clearTrips');
 	clearLink.addEventListener("click", clearData);
-	
+
 	var addButton = $('addTrip');
-	addButton.addEventListener("click", storeData);
+	addButton.addEventListener("click", validateForm);
 	
+
 	var peopleSlider = $('numPeople');
 	peopleSlider.addEventListener("change", updatePeople);
 
