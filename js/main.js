@@ -1,6 +1,6 @@
 // Nick Stelzer
-// VFW 1208 - Project 2
-// August 9, 2012
+// VFW 1208 - Project 3
+// August 16, 2012
 
 // Waits until DOM is ready
 window.addEventListener("DOMContentLoaded", function () {
@@ -130,8 +130,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			buttonSpan.appendChild(removeButton);
 			editButton.addEventListener("click", editTrip);
 			removeButton.addEventListener("click", removeTrip);
-			/* To Do: Make Buttons Same Size			*/
-	
+			
 		}
 	}
 	
@@ -140,7 +139,8 @@ window.addEventListener("DOMContentLoaded", function () {
 		// Get data from selected trip from local storage
 		var value = localStorage.getItem(this.key);
 		var trip = JSON.parse(value);
-		
+
+		$('formTitle').innerHTML = "Edit Trip";
 		toggleDisplay("off");
 		
 		$('travelMethod').value = trip.method[1];
