@@ -104,10 +104,16 @@ window.addEventListener("DOMContentLoaded", function () {
 			var value = localStorage.getItem(key);
 			var obj = JSON.parse(value);
 			makeSubDiv.setAttribute("id", key);	
-			var makeList = document.createElement('ul');
-			makeSubDiv.appendChild(makeList);
+			
+			// Add image based on trip type
+			var newImg = document.createElement('img');
+			newImg.setAttribute("src", "img/" + obj.method[1] + ".png");
+			newImg.setAttribute("class", "methodIcon");
+			makeSubDiv.appendChild(newImg);
 			
 			// Create List of Trip Details
+			var makeList = document.createElement('ul');
+			makeSubDiv.appendChild(makeList);
 			for (var k in obj) {
 				var makeLi = document.createElement('li');
 				makeList.appendChild(makeLi);
