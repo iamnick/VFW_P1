@@ -1,5 +1,5 @@
 // Nick Stelzer
-// VFW 1208 - Project 3
+// VFW 1208 - Project 4
 // August 16, 2012
 
 // Waits until DOM is ready
@@ -89,7 +89,8 @@ window.addEventListener("DOMContentLoaded", function () {
 	function getData () {
 		toggleDisplay("on");
 		if (localStorage.length === 0) {
-			alert("There are no saved trips currently.");
+			alert("There are no saved trips, so default data was added.");
+			autoFillData();
 		}
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "savedTrips");
@@ -102,8 +103,8 @@ window.addEventListener("DOMContentLoaded", function () {
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
 			var obj = JSON.parse(value);
+			makeSubDiv.setAttribute("id", key);	
 			var makeList = document.createElement('ul');
-			makeSubDiv.setAttribute("id", key);
 			makeSubDiv.appendChild(makeList);
 			
 			// Create List of Trip Details
@@ -224,6 +225,14 @@ window.addEventListener("DOMContentLoaded", function () {
 			window.location.reload();
 		} else {
 			alert("Trip was not removed.");
+		}
+	}
+	
+	// Adds in 3 trips of data to local storage from json object (json.js)
+	function autoFillData() {
+		for(var n in json) {
+			var id = Math.floor(Math.random()*1000000);
+			localStorage.setItem(id, JSON.stringify(json[n]));
 		}
 	}
 	
